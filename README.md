@@ -19,3 +19,11 @@ Priya –  Full-Stack Development & Project Management
 🎨 Clean and user-friendly interface
 
 ⚡ Optimized for fast loading and smooth navigation
+
+🛠️ Tech Stack
+
+Frontend: React JS
+
+Backend (if applicable): Supabase
+
+Version Control: Git & GitHub
