@@ -1,0 +1,417 @@
+/* Variables for easy color changes */
+:root {
+  --primary-color: #2e7d32;
+  --secondary-color: #66bb6a;
+  --text-color: #333;
+  --bg-color: #f7f7f7;
+  --card-bg: #fff;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Header and Navigation Styles (Start..........Rohan) */
+.header {
+  /* This is the key part that makes GFG IKGPTU and the nav appear on the same row */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0d1117;
+  color: #fff;
+  padding: 1.5rem 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+.header:hover {
+  background-color: #161b22;
+}
+/* Logo Styles */
+.header .logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #c9d1d9;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.header .logo:hover {
+  color: #58a6ff;
+}
+/* Navbar Styles */
+.header nav ul {
+  /* This makes the list items (Home, About Us, etc.) horizontal */
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+.header nav li a {
+  text-decoration: none;
+  color: #c9d1d9;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+/* Underline Animation Effect */
+.header nav li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background-color: #58a6ff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-in-out;
+}
+.header nav li a:hover::after,
+.header nav li a:focus::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+/* Header and Navigation Styles (End..........Rohan) */
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/images/hero-bg.jpeg') no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 8rem 0;
+}
+
+/* Blog Section */
+.blog-section {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.blog-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+/* Footer Styles */
+.footer-container {
+  background-color: #0d1117;
+  color: #c9d1d9;
+  padding: 3rem 2rem;
+  font-family: 'Inter', sans-serif;
+}
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap; /* Allows sections to wrap on smaller screens */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-logo {
+  flex: 1;
+  min-width: 250px;
+}
+.footer-logo h2 {
+  color: #58a6ff;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+}
+.footer-logo p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+.footer-links h3,
+.footer-social h3 {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links li a {
+  text-decoration: none;
+  color: #c9d1d9;
+  display: block;
+  padding: 0.4rem 0;
+  transition: color 0.3s ease;
+}
+.footer-links li a:hover {
+  color: #58a6ff;
+  transform: translateX(5px);
+}
+.footer-social .social-icons {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer-social .social-icons a {
+  color: #c9d1d9;
+  font-size: 1.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.footer-social .social-icons a:hover {
+  color: #58a6ff;
+  transform: translateY(-5px);
+}
+.footer-bottom {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(201, 209, 217, 0.1);
+}
+.footer-bottom p {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin: 0;
+}
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-links,
+  .footer-social {
+    margin-top: 2rem;
+  }
+  .footer-social .social-icons {
+    justify-content: center;
+  }
+}
+/* Team Page Styles */
+.team-page-container {
+  padding: 4rem 2rem;
+  background-color: var(--bg-color);
+  font-family: 'Inter', sans-serif;
+}
+.team-hero {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.team-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+.team-hero .highlight {
+  color: var(--primary-color);
+}
+.team-hero p {
+  font-size: 1.2rem;
+  color: #666;
+}
+.team-section {
+  margin-bottom: 3rem;
+}
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 4px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+.team-grid {
+  display: grid;
+  gap: 2rem;
+  justify-content: center;
+}
+.advisor-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.core-team-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+/* New Team Card Styles with Animations */
+.team-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  text-align: center;
+  padding: 1.5rem;
+  position: relative;
+  /* Glowing border effect */
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  overflow: hidden;
+
+  /* Card shadow and hover effects */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.team-card:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
+  z-index: -1;
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
+  background-size: 200% 200%;
+  border-radius: 14px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  animation: glowing-border 4s linear infinite;
+}
+
+.team-card:hover:before {
+  opacity: 1;
+}
+
+@keyframes glowing-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.team-card:hover {
+  transform: translateY(-12px) rotateX(5deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Image Container Styles */
+.card-image-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+  border: 4px solid var(--secondary-color);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.4s ease;
+}
+
+.team-card:hover .card-image-container {
+  transform: scale(1.1);
+  border-color: #58a6ff;
+}
+
+.team-member-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.team-card:hover .team-member-image {
+  transform: scale(1.05);
+}
+
+/* Content Styles */
+.card-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0.2rem;
+  color: #333;
+  transition: color 0.4s ease;
+}
+
+.team-card:hover .card-content h3 {
+  color: var(--primary-color);
+}
+
+.member-position {
+  font-size: 0.9rem;
+  color: #888;
+  transition: color 0.4s ease;
+}
+
+.team-card:hover .member-position {
+  color: #666;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .team-page-container {
+    padding: 2rem 1rem;
+  }
+  
+  .team-hero h1 {
+    font-size: 2rem;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Mobile Responsive(...........Rohan........) */
+
+/* Media Query for Mobile and Tablet Devices (Screen width up to 768px) */
+@media (max-width: 768px) {
+  /* Header and Navigation adjustments */
+  .header {
+    flex-direction: column; /* Stacks the logo and navigation links vertically */
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .header .logo {
+    margin-bottom: 1.5rem; /* Creates space between the logo and nav links */
+  }
+
+  .header nav ul {
+    flex-direction: column; /* Stacks the navigation links vertically */
+    gap: 1.5rem;
+  }
+
+  .header nav li a {
+    font-size: 1.1rem; /* Adjusts font size for better readability */
+  }
+
+  /* Hero Section adjustments */
+  .hero-section {
+    padding: 6rem 1rem; /* Reduces padding on smaller screens */
+  }
+  
+  .hero-section h1 {
+    font-size: 2rem; /* Makes the heading fit better on mobile */
+  }
+  
+  /* Blog Section adjustments */
+  .blog-list {
+    grid-template-columns: 1fr; /* Changes to a single column layout */
+  }
+}
