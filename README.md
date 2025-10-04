@@ -27,5 +27,3 @@ Frontend: React JS
 Backend (if applicable): Supabase
 
 Version Control: Git & GitHub
-
-# hello
