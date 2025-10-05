@@ -24,14 +24,14 @@ export const teamMembers = [
     id: 1,
     name: "Dr. Rajeev Bedi",
     position: "Chief Advisor",
-    image: "/images/pic2.jpg",
+    image: "/images/hod.jpg",
     category: "Advisors"
   },
   {
     id: 2,
     name: "Dr. Anshu Bhasin",
     position: "Faculty Advisor",
-    image: "/images/pic2.jpg",
+    image: "/images/anshu_mam.jpg",
     category: "Advisors"
   },
   // Campus Mantri
@@ -39,7 +39,7 @@ export const teamMembers = [
     id: 3,
     name: "Alok Kumar Jha",
     position: "Campus Mantri",
-    image: "/images/pic2.jpg",
+    image: "/images/mantri.jpg",
     category: "Advisors"
   },
 
@@ -48,105 +48,105 @@ export const teamMembers = [
     id: 4,
     name: "Priya Ranjan",
     position: "Head (Tech)",
-    image: "/images/pic2.jpg",
+    image: "/images/priya.jpg",
     category: "Core Team"
   },
     {
     id: 5,
     name: "Abhijeet",
     position: "Co-Head (Tech)",
-    image: "/images/pic2.jpg",
+    image: "/images/abhijeet.jpg",
     category: "Core Team"
   },
     {
     id: 6,
     name: "Rohan",
     position: "Executive (Tech)",
-    image: "/images/pic2.jpg",
+    image: "/images/rohan.jpg",
     category: "Core Team"
   },
   {
     id: 7,
     name: "Aayushi",
     position: "Head (Event M.)",
-    image: "/images/pic2.jpg",
+    image: "/images/ayushi.jpg",
     category: "Core Team"
   },
     {
     id: 8,
     name: "Vaishnavi",
     position: "Co-Head (Event M.)",
-    image: "/images/pic2.jpg",
+    image: "/images/vaishnavi.jpg",
     category: "Core Team"
   },
       {
     id: 9,
     name: "Prince Pawan",
     position: "Executive (Event M.)",
-    image: "/images/pic2.jpg",
+    image: "/images/prince.jpg",
     category: "Core Team"
   },
   {
     id: 10,
     name: "Sudeep",
     position: "Head (C&D)",
-    image: "/images/pic2.jpg",
+    image: "/images/sudeep.jpg",
     category: "Core Team"
   },
     {
     id: 11,
     name: "Manvir",
     position: "Co-Head (C&D)",
-    image: "/images/pic2.jpg",
+    image: "/images/manvir.jpg",
     category: "Core Team"
   },
     {
     id: 12,
     name: "Hitesh K.s.",
     position: "Executive (C&D)",
-    image: "/images/pic2.jpg",
+    image: "/images/hitesh.jpg",
     category: "Core Team"
   },
   {
     id: 13,
     name: "Anu",
     position: "Head (PR)",
-    image: "/images/pic2.jpg",
+    image: "/images/anu.jpg",
     category: "Core Team"
   },
     {
     id: 14,
     name: "Bismanl Kaur",
     position: "Co-Head (PR)",
-    image: "/images/pic2.jpg",
+    image: "/images/bisman.jpg",
     category: "Core Team"
   },
   {
     id: 15,
     name: "Vinayak",
     position: "Head (CC)",
-    image: "/images/pic2.jpg",
+    image: "/images/vinayak.jpg",
     category: "Core Team"
   },
   {
     id: 16,
     name: "Vikash Kumar",
     position: "Co-Head (CC)",
-    image: "/images/pic2.jpg",
+    image: "/images/vikash.jpg",
     category: "Core Team"
   },
     {
     id: 17,
     name: "Ananya",
     position: "Head (Media)",
-    image: "/images/pic2.jpg",
+    image: "/images/ananya.jpg",
     category: "Core Team"
   },
     {
     id: 18,
     name: "Himansh",
     position: "Co-Head (Media)",
-    image: "/images/pic2.jpg",
+    image: "/images/himansh.jpg",
     category: "Core Team"
   },
 ];

@@ -16,7 +16,7 @@ const TeamPage = () => {
       </div>
 
       <div className="team-section">
-        <h2 className="section-title">Faculty Advisors</h2>
+        <h2 className="section-title">GFG IKGPTU Core Council</h2>
         <div className="team-grid advisor-grid">
           {advisors.map(member => (
             <TeamMemberCard key={member.id} member={member} />

@@ -83,13 +83,50 @@ body {
 }
 /* Header and Navigation Styles (End..........Rohan) */
 
-/* Hero Section */
+/* Hero Section start ..........(Rohan) */
 .hero-section {
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/images/hero-bg.jpeg') no-repeat center center/cover;
+  /* Remove the old background-image and video placeholder */
+  background: none; 
+  position: relative; /* Essential for positioning the video absolutely within it */
   color: white;
   text-align: center;
-  padding: 8rem 0;
+  padding: 0; /* Remove padding here, the content will add it */
+  height: 100vh; /* Make the hero section full viewport height */
+  overflow: hidden; /* Important to hide video edges */
 }
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Use transform to center the video */
+  transform: translate(-50%, -50%);
+  /* Ensure the video covers the entire section */
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0; /* Keeps the video behind the content */
+}
+
+.hero-content {
+  /* Overlay styles */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Puts the content above the video */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically centers content */
+  align-items: center; /* Horizontally centers content */
+  padding: 2rem;
+  
+  /* Background Overlay (Shadow/Gradient) for readability */
+  background: rgba(0, 0, 0, 0.6); 
+}
+/* Hero Section end ..........(Rohan) */
 
 /* Blog Section */
 .blog-section {
