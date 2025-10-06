@@ -128,6 +128,262 @@ body {
 }
 /* Hero Section end ..........(Rohan) */
 
+/* About Section for HomePage start ....(Rohan)*/
+.about-section-home {
+  background-color: #ffffff; /* White background to contrast with the dark header and video */
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.about-section-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title-home {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.subtitle-home {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+/* Feature Grid Styles */
+.features-grid-home {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.feature-item-home {
+  flex: 1;
+  max-width: 350px;
+  padding: 1.5rem;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.feature-item-home:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: var(--secondary-color);
+}
+
+.feature-icon-home {
+  font-size: 3rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.feature-item-home h4 {
+  font-size: 1.3rem;
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Call to Action Button */
+.cta-button-home {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button-home:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .features-grid-home {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .feature-item-home {
+    max-width: 100%;
+  }
+
+  .section-title-home {
+    font-size: 2rem;
+  }
+}
+/* About Section for HomePage end ....(Rohan)*/
+
+/* About Page Styles start ....(Rohan)*/
+.about-page-container {
+  padding: 4rem 2rem;
+  background-color: var(--bg-color);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hero Section */
+.about-hero {
+  text-align: center;
+  padding: 3rem 0;
+  margin-bottom: 3rem;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.about-hero .hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-color);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Mission & Vision Section */
+.mission-vision-section {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.mission-vision-card {
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex: 1;
+  max-width: 450px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mission-vision-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mv-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.mission-icon {
+  color: #ff5722; /* Orange for ambition/mission */
+}
+
+.vision-icon {
+  color: #00bcd4; /* Cyan for clarity/vision */
+}
+
+/* Activities Section */
+.activities-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+
+.activities-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.activity-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.activity-card:hover {
+  background-color: var(--secondary-color);
+  color: white;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.activity-card:hover .activity-icon {
+  color: white;
+}
+
+.activity-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Call To Action Section */
+.cta-section {
+  text-align: center;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.cta-button {
+  background-color: white;
+  color: var(--primary-color);
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: #eee;
+  transform: translateY(-2px);
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .mission-vision-section {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .mission-vision-card, .activity-card {
+    max-width: 100%;
+  }
+
+  .activities-grid {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+/* About Page Styles end....(Rohan)*/
+
 /* Blog Section */
 .blog-section {
   padding: 3rem 2rem;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaInstagram, FaLinkedin, FaYoutube, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { FaInstagram, FaLinkedin, FaFacebook, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -27,19 +27,19 @@ const Footer = () => {
         <div className="footer-social">
           <h3>Connect With Us</h3>
           <div className="social-icons">
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/company/geeks-for-geeks-ikgptu/" target="_blank" rel="noopener noreferrer">
               <FaLinkedin />
             </a>
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/gfg_ikgptu?igsh=aWNpNmNhYXFjMTRs" target="_blank" rel="noopener noreferrer">
               <FaInstagram />
             </a>
-            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
-              <FaYoutube />
+            <a href="YOUR_FACEBOOK_PAGE_URL" target="_blank" rel="noopener noreferrer">
+              <FaFacebook />
             </a>
             <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">
               <FaGithub />
             </a>
-            <a href="mailto:contact@gfgikgptu.com" target="_blank" rel="noopener noreferrer">
+            <a href="mailto:gfgikgptu@gmail.com" target="_blank" rel="noopener noreferrer">
               <FaEnvelope />
             </a>
           </div>
