@@ -36,7 +36,7 @@ const Footer = () => {
             <a href="YOUR_FACEBOOK_PAGE_URL" target="_blank" rel="noopener noreferrer">
               <FaFacebook />
             </a>
-            <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/GFG-IKGPTU" target="_blank" rel="noopener noreferrer">
               <FaGithub />
             </a>
             <a href="mailto:gfgikgptu@gmail.com" target="_blank" rel="noopener noreferrer">
