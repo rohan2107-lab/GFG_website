@@ -17,7 +17,7 @@ const HeroSection = () => {
       <div className="hero-content">
         <h1>Welcome to GFG IKGPTU</h1>
         <p>A community of passionate coders, developers, and tech enthusiasts.</p>
-        <button className="cta-button">Join Our Community</button>
+        <button className="cta-button"><a href='https://chat.whatsapp.com/FOkUp3cUuLkFWKqOY1vXLk?mode=ems_copy_t'>Join Our Community</a></button>
       </div>
     </section>
   );
