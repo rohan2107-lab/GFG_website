@@ -1,19 +1,29 @@
+// src/mockData.js
+
 export const mockBlogs = [
   {
     id: 1,
     title: 'Getting Started with MERN Stack',
     author: 'Tech Admin',
     date: 'Sep 16, 2025',
-    content: 'A comprehensive guide to building a web application with MongoDB, Express, React, and Node.js.',
-    image: 'https://via.placeholder.com/400x200',
+    content: 'A comprehensive guide to building a web application with MongoDB, Express, React, and Node.js. Learn the core principles and start your full-stack journey!',
+    image: '/images/team.jpg',
   },
   {
     id: 2,
     title: 'A Guide to Competitive Programming',
-    author: 'Tech Admin',
+    author: 'Code Master',
     date: 'Aug 28, 2025',
-    content: 'Tips and tricks to excel in competitive programming and win contests.',
-    image: 'https://via.placeholder.com/400x200',
+    content: 'Tips and tricks to excel in competitive programming and win contests. Focus on speed, precision, and problem decomposition.',
+    image: '/images/team.jpg',
+  },
+  {
+    id: 3,
+    title: 'Top 5 Interview Questions for Beginners',
+    author: 'PR Admin',
+    date: 'Aug 10, 2025',
+    content: 'Prepare for your first tech interview by mastering these foundational data structure and algorithm questions.',
+    image: '/images/team.jpg',
   },
   // Add more blog objects here
 ];
@@ -148,5 +158,56 @@ export const teamMembers = [
     position: "Co-Head (Media)",
     image: "/images/himansh.jpg",
     category: "Core Team"
+  },
+];
+
+// src/mockData.js
+
+// ... (Your existing mock data: mockBlogs, teamMembers)
+
+export const mockEvents = [
+  {
+    id: 101,
+    title: "GFG IKGPTU Hackathon 3.0",
+    date: "October 28, 2025",
+    time: "9:00 AM - 5:00 PM",
+    location: "Auditorium Hall",
+    description: "Our annual, flagship coding competition. Solve real-world problems and win exciting prizes!",
+    status: "Upcoming",
+    link: "#register-hackathon",
+    image: "/images/team.jpg"
+  },
+  {
+    id: 102,
+    title: "DSA Workshop: Linked Lists",
+    date: "October 10, 2025",
+    time: "4:00 PM - 5:30 PM",
+    location: "CSE Lab 305",
+    description: "A deep dive into Linked Lists and their applications in competitive programming.",
+    status: "Upcoming",
+    link: "#register-dsa",
+    image: "/images/team.jpg"
+  },
+  {
+    id: 103,
+    title: "Introduction to Web Development",
+    date: "August 15, 2025",
+    time: "10:00 AM - 1:00 PM",
+    location: "Main Seminar Hall",
+    description: "A beginner-friendly workshop on HTML, CSS, and JavaScript fundamentals.",
+    status: "Past",
+    link: "#view-photos",
+    image: "/images/team.jpg"
+  },
+  {
+    id: 104,
+    title: "Tech Career Panel 2024",
+    date: "April 5, 2025",
+    time: "6:00 PM - 7:30 PM",
+    location: "Online (Zoom)",
+    description: "Panel discussion with alumni working at top tech companies.",
+    status: "Past",
+    link: "#view-recap",
+    image: "/images/team.jpg"
   },
 ];
