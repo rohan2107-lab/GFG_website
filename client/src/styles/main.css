@@ -384,31 +384,229 @@ body {
 }
 /* About Page Styles end....(Rohan)*/
 
-/* Blog Section */
+/* Blog Section for Homepage start ......(Rohan)*/
 .blog-section {
-  padding: 3rem 2rem;
+  padding: 5rem 2rem;
   text-align: center;
+  background-color: #ffffff; /* Use a clean white background */
+}
+
+.blog-section h2 {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin-bottom: 3rem;
+  position: relative;
+  /* Simple underline effect */
+}
+
+.blog-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background-color: var(--primary-color); /* GFG Green underline */
+  border-radius: 2px;
 }
 
 .blog-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 2.5rem; /* Increased spacing between cards */
   margin-top: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem;
 }
 
+/* Individual Blog Preview Card Styles (for Homepage) */
 .blog-card {
   background-color: var(--card-bg);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 5px solid var(--secondary-color); /* Accent top border */
 }
 
 .blog-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px); /* Lifts up more dramatically */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
-/* Footer Styles */
+
+.blog-card-content {
+  padding: 1.5rem;
+}
+
+.blog-card-content h3 {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  min-height: 42px; /* Ensures consistent height for titles */
+}
+
+.blog-card-content p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.blog-date {
+  display: block;
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 1rem;
+}
+
+/* Read More Button */
+.read-more {
+  display: inline-block;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.read-more:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* "View All Articles" CTA Button at the bottom */
+.cta-all-blogs {
+    margin-top: 4rem;
+}
+
+.cta-all-blogs .cta-button-home {
+    /* Reusing the style from AboutSection.js, but centering it */
+    margin: 0 auto; 
+}
+
+
+/* Mobile Responsiveness for Homepage Blog Section */
+@media (max-width: 768px) {
+  .blog-section {
+    padding: 3rem 1rem;
+  }
+  
+  .blog-section h2 {
+    font-size: 2rem;
+  }
+  
+  .blog-list {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 1.5rem;
+  }
+}
+/* Blog Section for Homepage end ......(Rohan)*/
+/* Blog Post Detail Page Container start .....(Rohan) */
+.blog-detail-container {
+  max-width: 900px; /* Max width for comfortable reading */
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  background-color: white; /* Clean reading background */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+/* Header Section */
+.blog-detail-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.blog-detail-header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #333;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.blog-meta {
+  font-size: 0.95rem;
+  color: #888;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+/* Featured Image/Video Container */
+.blog-featured-media {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-featured-media img,
+.blog-featured-media video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Content Area - Focus on Readability (Typography) */
+.blog-detail-content {
+  line-height: 1.8; /* Excellent line spacing for easy reading */
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.blog-detail-content p {
+  margin-bottom: 1.5em;
+  text-align: justify; /* Justify text for a newspaper/magazine feel */
+}
+
+/* Styling for subheadings and blockquotes */
+.blog-detail-content h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-left: 5px solid var(--secondary-color);
+  padding-left: 15px;
+}
+
+.blog-detail-content ul, 
+.blog-detail-content ol {
+  padding-left: 25px;
+  margin-bottom: 1.5em;
+}
+
+.blog-detail-content blockquote {
+  border-left: 4px solid var(--secondary-color);
+  padding: 10px 20px;
+  margin: 20px 0;
+  background-color: #f7f7f7;
+  font-style: italic;
+  color: #555;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 950px) {
+  .blog-detail-container {
+    padding: 2rem 1rem;
+    max-width: 100%;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .blog-detail-header h1 {
+    font-size: 2rem;
+  }
+}
+/* Blog Post Detail Page Container start .....(Rohan) */
+/* Footer Styles start....(Rohan) */
 .footer-container {
   background-color: #0d1117;
   color: #c9d1d9;
@@ -498,7 +696,9 @@ body {
     justify-content: center;
   }
 }
-/* Team Page Styles */
+/* Footer Styles end....(Rohan) */
+
+/* Team Page Styles start ....(Rohan)*/
 .team-page-container {
   padding: 4rem 2rem;
   background-color: var(--bg-color);
@@ -668,165 +868,216 @@ body {
     grid-template-columns: 1fr;
   }
 }
+/* Team Page Styles end ....(Rohan)*/
 
 /* Events Page Styles start ....(Rohan)*/
-.events-page-container {
-  padding: 4rem 2rem;
-  background-color: var(--bg-color);
-  font-family: 'Inter', sans-serif;
-}
-
+/* --- ENHANCED EVENTS HERO SECTION --- */
 .events-hero {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 4.5rem; /* Increase margin for separation */
+  padding: 3rem 0; /* Add vertical padding */
+  
+  /* Modern styling: Subtle gradient background */
+  background: linear-gradient(180deg, #f7fcf7 0%, #ffffff 100%);
+  border-radius: 10px;
+  border-bottom: 3px solid var(--secondary-color); /* GFG accent line */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Soft shadow */
 }
 
 .events-hero h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.5rem; /* Larger and more impactful */
+  font-weight: 900; /* Extra bold */
+  color: #2c3e50; /* Darker, more professional text color */
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .events-hero .highlight {
-  color: var(--primary-color);
+  /* Use GFG primary color for emphasis */
+  color: var(--primary-color); 
 }
 
 .events-hero p {
-  font-size: 1.1rem;
-  color: #666;
+  font-size: 1.25rem; /* Slightly larger and easier to read */
+  color: #7f8c8d; /* Subtle gray color */
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.4;
+  font-style: italic; /* Adds a touch of sophistication */
 }
 
-.events-section {
-  margin-bottom: 4rem;
-}
+/* --- ENHANCED EVENTS PAGE STYLES (Compact List View) --- */
 
-/* Reusing the Section Title style from Team Page */
 .events-section .section-title {
-  /* You may need to adjust the centering here if you kept the complex team page centering */
+  /* Retain title styling */
   text-align: center;
-  margin-bottom: 3rem;
-  font-size: 2.2rem;
-  color: var(--primary-color);
+  margin-bottom: 2.5rem;
 }
 
-.events-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
-  justify-content: center;
+.event-compact-list {
+  /* Key change: Creates a scrolling container for the list */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
 }
 
 .no-events {
-  font-style: italic;
-  color: #888;
-  grid-column: 1 / -1; /* Centers the message in the grid */
-  text-align: center;
+    text-align: center;
+    color: #888;
+    padding: 20px;
 }
 
-/* Event Card Styles */
-.event-card {
-  background: var(--card-bg);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+/* --- INDIVIDUAL COMPACT CARD STYLES --- */
+.event-compact-card {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid transparent;
+}
+
+.event-compact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-upcoming {
+  border-left-color: var(--primary-color);
+}
+
+.card-past {
+  border-left-color: #95a5a6; /* Archival gray */
+  opacity: 0.9;
+}
+
+/* 1. Status Indicator */
+.card-status-indicator {
+  flex-shrink: 0; /* Prevents shrinking */
+  margin-right: 20px;
+}
+
+.status-icon {
+  font-size: 1.8rem;
+}
+
+.upcoming-icon {
+  color: var(--primary-color);
+}
+
+.past-icon {
+  color: #95a5a6;
+}
+
+/* 2. Main Details (Title & Description) */
+.card-main-details {
+  flex-grow: 1; /* Takes up most available space */
+  min-width: 250px;
+  margin-right: 20px;
+}
+
+.event-title-compact {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #34495e;
+  margin: 0;
+}
+
+.event-description-compact {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin: 5px 0 0;
+}
+
+/* 3. Metadata Group (Date, Time, Location) */
+.card-metadata-group {
   display: flex;
-  flex-direction: column;
+  flex-shrink: 0;
+  gap: 20px;
+  align-items: center;
+  border-left: 1px solid #eee;
+  padding-left: 20px;
+  margin-right: 20px;
 }
 
-.event-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.event-image-container {
-  height: 200px;
-  overflow: hidden;
-}
-
-.event-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.event-card:hover .event-image {
-  transform: scale(1.05);
-}
-
-.event-details {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.event-details h3 {
-  font-size: 1.5rem;
-  color: var(--text-color);
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-.event-description {
-  font-size: 0.95rem;
-  color: #666;
-  margin-bottom: 1rem;
-  flex-grow: 1;
-}
-
-.event-meta p {
+.meta-item {
   display: flex;
   align-items: center;
   font-size: 0.9rem;
-  color: var(--text-color);
-  margin: 0.3rem 0;
+  color: #555;
+  white-space: nowrap;
 }
 
-.event-meta svg {
+.meta-icon {
   color: var(--secondary-color);
-  margin-right: 0.5rem;
+  margin-right: 5px;
 }
 
-.event-cta-button {
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 0.75rem 0;
-  border-radius: 5px;
+/* 4. Action Button */
+.event-action-button {
+  flex-shrink: 0;
+  padding: 8px 15px;
+  border-radius: 50px;
   text-decoration: none;
   font-weight: 600;
-  margin-top: 1rem;
-  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
 }
 
-/* Styling for Upcoming vs. Past CTA Buttons */
-.card-upcoming .event-cta-button {
+.btn-upcoming {
   background-color: var(--primary-color);
   color: white;
 }
 
-.card-upcoming .event-cta-button:hover {
-  background-color: #388e3c; /* Darker GFG Green */
+.btn-upcoming:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
 }
 
-.card-past .event-cta-button {
-  background-color: #e0e0e0;
+.btn-past {
+  background-color: #f0f0f0;
   color: #555;
 }
 
-.card-past .event-cta-button:hover {
-  background-color: #ccc;
-  color: #333;
+.btn-past:hover {
+  background-color: #e0e0e0;
 }
 
+/* --- Responsive Adjustments for Mobile --- */
+@media (max-width: 900px) {
+  .event-compact-card {
+    flex-direction: column; /* Stack all items vertically on small screens */
+    align-items: flex-start;
+    padding: 15px;
+    gap: 15px;
+  }
+  
+  .card-main-details {
+    width: 100%;
+    margin-right: 0;
+  }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .events-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .card-metadata-group {
+    border-left: none;
+    padding-left: 0;
+    margin-right: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .event-action-button {
+    width: 100%;
+    text-align: center;
   }
 }
 /* Events Page Styles end ....(Rohan)*/
@@ -1115,7 +1366,502 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
-/* Admin Layout and Dashboard Styles start...(Rohan) */
+/* Admin Layout and Dashboard Styles end...(Rohan) */
+
+/* Blog CMS Specific Styles start.....(Rohan) */
+
+.blog-cms-container {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar for CMS */
+.cms-sidebar {
+  width: 250px;
+  background-color: #34495e;
+  padding: 20px 0;
+  min-height: calc(100vh - 80px); /* Adjust to fit below header space */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.cms-sidebar.collapsed {
+  width: 70px;
+}
+
+.cms-main-panel {
+  flex-grow: 1;
+  padding: 30px;
+  background-color: #ecf0f1;
+}
+
+.collapse-toggle-btn {
+  position: absolute;
+  top: 10px;
+  right: -15px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.cms-nav-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 15px 20px;
+  color: #ecf0f1;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.cms-nav-button:hover,
+.cms-nav-button.active {
+  background-color: #2c3e50;
+  color: var(--secondary-color);
+}
+
+.cms-nav-icon {
+  margin-right: 15px;
+  min-width: 20px;
+}
+
+/* Post Editor Styles */
+.action-buttons {
+  margin-bottom: 25px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+}
+
+.action-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 10px;
+  transition: opacity 0.2s ease;
+}
+
+.btn-publish {
+  background-color: #2ecc71; /* Green */
+  color: white;
+}
+
+.btn-save-draft {
+  background-color: #f39c12; /* Orange */
+  color: white;
+}
+
+.btn-save-published {
+  background-color: #3498db; /* Blue */
+  color: white;
+}
+
+/* Post Format Fields */
+.post-format-fields > * {
+  margin-bottom: 20px;
+}
+
+.blog-title-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.blog-content-textarea {
+  width: 100%;
+  min-height: 400px;
+  padding: 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+.post-meta-info {
+  display: flex;
+  gap: 15px;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+.status-tag {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.status-draft { background-color: #f39c12; color: white; }
+.status-published { background-color: #2ecc71; color: white; }
+
+/* Photo Upload */
+.photo-upload-area {
+  border: 2px dashed #bdc3c7;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.photo-placeholder svg {
+  font-size: 2rem;
+  color: #bdc3c7;
+  margin-bottom: 5px;
+}
+
+.upload-label {
+  display: inline-block;
+  background-color: #3498db;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.file-input {
+  display: none;
+}
+
+/* Manage Posts Table */
+.blog-list-table,
+.settings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-list-table th,
+.blog-list-table td,
+.settings-table th,
+.settings-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.blog-list-table th {
+  background-color: #f9f9f9;
+  font-weight: bold;
+  color: #34495e;
+}
+
+.blog-list-row {
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.blog-list-row:hover {
+  background-color: #f0f2f5;
+}
+
+.post-status {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+/* Styling for Delete Button in Manage Posts table */
+.delete-btn {
+  background: none;
+  border: none;
+  color: #e74c3c; /* Red color for danger */
+  cursor: pointer;
+  padding: 5px;
+  font-size: 1rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  color: #c0392b; /* Darker red on hover */
+  transform: scale(1.1);
+}
+/* Blog CMS Specific Styles end.....(Rohan) */
+
+/* Event Management CMS Styles start ....(Rohan)*/
+/* --- 1. EVENT CMS SUB-NAVIGATION --- */
+.event-cms-subnav {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 5px;
+    gap: 15px;
+}
+
+.event-cms-subnav .cms-nav-button {
+    /* Base style for the sub-navigation buttons */
+    background: none;
+    color: #555;
+    border: none;
+    border-bottom: 3px solid transparent; /* Prepare for active border */
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.event-cms-subnav .cms-nav-button:hover {
+    color: var(--primary-color);
+    background-color: #f5f5f5;
+}
+
+.event-cms-subnav .cms-nav-button.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    background-color: transparent;
+    transform: translateY(-2px);
+}
+/* --- 2. FORM LAYOUT AND FIELDS --- */
+.event-form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.form-group-full {
+    width: 100%;
+}
+
+.form-group-half {
+    flex: 1;
+    min-width: calc(50% - 10px); /* Ensures two columns */
+}
+
+.event-form-grid label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #34495e;
+    font-size: 0.95rem;
+}
+
+/* Base style for all inputs and textareas */
+.input-full, .textarea-full {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Slightly rounder for modern look */
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: #fafafa;
+}
+
+.input-full:focus, .textarea-full:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2); /* Soft green glow focus */
+    background-color: white;
+}
+
+.textarea-full {
+    resize: vertical;
+}
+
+/* Checkbox and Status Group */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    padding-top: 1.8rem;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+    appearance: none; /* Hide default checkbox */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.checkbox-group input[type="checkbox"]:checked::before {
+    content: '✓';
+    display: block;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    line-height: 18px;
+}
+/* --- 3. ACTION BUTTONS --- */
+.form-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.admin-cta-button { /* Already styled in previous Admin CSS, ensuring primary color */
+    padding: 12px 25px;
+    font-weight: 700;
+}
+
+.archive-btn {
+    background-color: #f39c12 !important; /* Orange: Warning/Archive */
+    color: white !important;
+    border: none !important;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.archive-btn:hover {
+    background-color: #e67e22 !important;
+}
+
+/* Disabled State */
+.admin-cta-button:disabled, .archive-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+/* --- 4. EVENT LIST TABLE OVERRIDES --- */
+.cms-list-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.cms-list-table th, .cms-list-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+    white-space: nowrap;
+}
+
+.cms-list-table th {
+    background-color: #f7f7f7;
+    font-weight: 700;
+    color: #34495e;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.cms-list-row {
+    transition: background-color 0.1s ease;
+}
+
+.cms-list-row:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+/* Status Badges */
+.event-status {
+    padding: 5px 10px;
+    border-radius: 20px; /* Pill shape */
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: white;
+}
+
+.status-draft {
+    background-color: #95a5a6; /* Gray/Draft */
+}
+
+.status-upcoming {
+    background-color: #2ecc71; /* Bright Green */
+}
+
+.status-completed {
+    background-color: #34495e; /* Archival Dark */
+}
+
+/* Public Visibility Icons */
+.status-icon-public {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.status-icon-draft {
+    color: #e74c3c;
+    font-size: 1.1rem;
+}
+
+/* Delete Button (Reusing Blog CMS Style) */
+.cms-delete-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 1rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.cms-delete-btn:hover {
+    color: #c0392b;
+    transform: scale(1.1);
+}
+/* Event Management CMS Styles (Minimal for now) */
+.event-cms-subnav {
+    display: flex;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    gap: 10px;
+}
+
+/* Reusing existing button styles for consistency */
+.event-cms-subnav .cms-nav-button {
+    background-color: #f9f9f9;
+    color: #34495e;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.event-cms-subnav .cms-nav-button:hover,
+.event-cms-subnav .cms-nav-button.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.event-form-group {
+    margin-bottom: 20px;
+}
+
+.event-form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #34495e;
+}
+/* Event Management CMS Styles (Minimal for now) */
+/* Event Management CMS Styles end ....(Rohan)*/
 
 /* Mobile Responsive(...........Rohan........) */
 

@@ -1,27 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import ManagePosts from './BlogCMS/ManagePosts';
+import PostEditor from './BlogCMS/PostEditor';
+import SettingsCMS from './BlogCMS/SettingsCMS';
+import { FaPlus, FaListAlt, FaCog, FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa';
 
 const BlogAdmin = () => {
-  // Mock data for demonstration
-  const mockBlogs = [{ id: 1, title: 'MERN Stack Guide', status: 'Published' }, { id: 2, title: 'Contest Tips', status: 'Draft' }];
+  const navigate = useNavigate();
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  // MOCK: The currently selected view key
+  const [selectedView, setSelectedView] = useState('manage');
+
+  const navItems = [
+    { key: 'create', name: 'Create Post', icon: FaPlus, path: 'create' },
+    { key: 'manage', name: 'Manage Posts', icon: FaListAlt, path: '/' },
+    { key: 'settings', name: 'Settings', icon: FaCog, path: 'settings' },
+  ];
+
+  const handleNavClick = (key, path) => {
+    setSelectedView(key);
+    navigate(`/admin/blogs/${path}`);
+  };
 
   return (
-    <div className="admin-panel">
-      <h2>Blog Management 📝</h2>
-      <p>This is the control panel for the **Blog Admin** (part of the Social Media Team). Manage drafts, publishing, and scheduled posts here.</p>
-      
-      <button className="admin-cta-button">+ Create New Blog Post</button>
+    <div className="blog-cms-container">
+      {/* 1. Left Panel (LP) */}
+      <div className={`cms-sidebar ${isSidebarCollapsed ? 'collapsed' : ''}`}>
+        <button 
+          className="collapse-toggle-btn" 
+          onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+          title={isSidebarCollapsed ? 'Expand' : 'Collapse'}
+        >
+          {isSidebarCollapsed ? <FaAngleDoubleRight /> : <FaAngleDoubleLeft />}
+        </button>
 
-      <div className="admin-data-list">
-        <h3>Existing Posts</h3>
-        <ul>
-          {mockBlogs.map(blog => (
-            <li key={blog.id} className="admin-list-item">
-              <span>{blog.title}</span>
-              <span className={`blog-status status-${blog.status.toLowerCase()}`}>{blog.status}</span>
-              <button className="admin-edit-btn">Edit</button>
-            </li>
+        <div className="sidebar-nav">
+          {navItems.map(item => (
+            <button
+              key={item.key}
+              className={`cms-nav-button ${selectedView === item.key ? 'active' : ''}`}
+              onClick={() => handleNavClick(item.key, item.path)}
+            >
+              <item.icon className="cms-nav-icon" />
+              {!isSidebarCollapsed && <span>{item.name}</span>}
+            </button>
           ))}
-        </ul>
+        </div>
+      </div>
+
+      {/* 2. Main Panel */}
+      <div className="cms-main-panel">
+        <Routes>
+          {/* Default view shows the list of posts */}
+          <Route index element={<ManagePosts setSelectedView={setSelectedView} />} />
+          
+          {/* Post Editor for creating a new post */}
+          <Route path="create" element={<PostEditor />} /> 
+          
+          {/* Post Editor for editing an existing post (passed post ID) */}
+          <Route path="edit/:postId" element={<PostEditor />} /> 
+
+          {/* Settings View */}
+          <Route path="settings" element={<SettingsCMS />} />
+        </Routes>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import AboutPage from './pages/AboutPage';
 import BlogPage from './pages/BlogPage';
 import EventsPage from './pages/EventsPage';
 import TeamPage from './pages/TeamPage';
+import BlogPostDetail from './pages/BlogPostDetail'; 
 
 // Layout & Admin Imports
 import Header from './components/Layout/Header';
@@ -46,6 +47,9 @@ function App() {
           <Route path="/blogs" element={<BlogPage />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/team" element={<TeamPage />} />
+         {/* FIX: DYNAMIC BLOG DETAIL ROUTE */}
+          {/* The ':blogId' tells React Router to capture the ID segment */}
+          <Route path="/blogs/:blogId" element={<BlogPostDetail />} /> 
           {/* Add a Login route here when you create it */}
           {/* <Route path="/login" element={<Login />} /> */}
         </Route>
