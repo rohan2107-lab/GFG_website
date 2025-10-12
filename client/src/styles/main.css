@@ -1861,8 +1861,245 @@ body {
     color: #34495e;
 }
 /* Event Management CMS Styles (Minimal for now) */
+/* ............announcement.............. */
 /* Event Management CMS Styles end ....(Rohan)*/
+/* --- ENHANCED TABLE HEADER & GENERAL STYLING --- */
+.announcement-table {
+    /* Keep existing border-collapse: separate and spacing */
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: 20px;
+}
 
+.announcement-table th, .announcement-table td {
+    padding: 14px 18px; /* Slightly more spacious padding */
+    text-align: left;
+    background-color: white;
+    border: none;
+}
+
+.announcement-table th {
+    background-color: #eef2f6; /* Lighter background for better contrast */
+    font-weight: 700; /* Bold headers */
+    color: #34495e;
+    text-transform: uppercase;
+    font-size: 0.8rem; /* Slightly smaller header text */
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    letter-spacing: 0.5px;
+}
+
+/* Ensure Row Hover is Visually Clear */
+.announcement-row:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px); /* Subtle lift */
+    background-color: #fafafa; /* Highlight entire row */
+}
+/* --- ACTION BUTTONS AND HOVER ANIMATION --- */
+.action-btn-group {
+    display: flex;
+    gap: 8px; /* Space between buttons */
+    align-items: center;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px; /* Larger hit area */
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.edit-btn {
+    color: #3498db;
+}
+
+.edit-btn:hover {
+    color: white;
+    background-color: #3498db;
+    transform: scale(1.05);
+}
+
+.delete-btn {
+    color: #e74c3c;
+}
+
+.delete-btn:hover {
+    color: white;
+    background-color: #e74c3c;
+    transform: scale(1.05);
+}
+/* --- STATUS AND PLATFORM TAG POLISH --- */
+.status-tag, .platform-tag {
+    padding: 5px 10px;
+    border-radius: 20px; /* More defined pill shape */
+    font-size: 0.7rem; /* Crisper text size */
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle tag shadow */
+}
+
+.platform-tag {
+    background-color: #e8f5e9; 
+    color: #2e7d32; /* Darker GFG Green text */
+    border: none; /* Remove border for cleaner look */
+}
+
+/* Status Colors: Use softer tones for backgrounds */
+.status-scheduled {
+    background-color: #ffcc80; /* Softer orange background */
+    color: #e65100;
+}
+.status-published {
+    background-color: #a5d6a7; /* Softer green background */
+    color: #2e7d32;
+}
+.status-draft {
+    background-color: #cfd8dc; /* Lighter gray background */
+    color: #455a64;
+}
+
+.message-cell {
+    /* Ensure the long message text wraps nicely */
+    max-width: 400px; 
+    white-space: normal;
+}
+/* ............announcement.............. */
+/* --- ANNOUNCEMENT TICKER STYLING --- */
+/* ............ANNOUNCEMENT USER START (Sleek Gray Theme).............. */
+
+/* --- ENHANCED ANNOUNCEMENT TICKER STYLING (Sleek Theme) --- */
+
+.announcement-ticker-section {
+  width: 100%;
+  overflow: hidden; 
+  /* Professional Dark Gray Background */
+  background-color: #333537; /* Dark Blue-Gray */
+  border-top: 1px solid #7f8c8d; 
+  border-bottom: 1px solid #7f8c8d;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Prominent shadow */
+  padding: 0;
+  margin: 0;
+}
+
+.ticker-content-wrapper {
+  display: flex;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Static Icon and Label (The "Pill" Badge) */
+.ticker-icon-static {
+  flex-shrink: 0;
+  padding: 8px 18px;
+  /* Contrasting Clean White/Light Gray Background */
+  background-color: #ecf0f1; 
+  color: #34495e; /* Dark text on light background */
+  font-weight: 800;
+  font-size: 0.9rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  /* Subtle border radius */
+  border-radius: 0 5px 5px 0; 
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); 
+  border-right: 3px solid var(--primary-color); /* GFG Green accent line */
+}
+
+.ticker-icon-static svg {
+  margin-right: 8px;
+  font-size: 1.3rem; 
+  color: var(--primary-color); /* Use GFG green for the icon */
+  animation: pulse-color 3s infinite ease-in-out; /* NEW: Pulse color animation */
+}
+
+.ticker-label {
+    margin-left: 5px;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: none;
+    color: #34495e;
+}
+
+/* Scrolling Text Wrapper */
+.ticker-scroll-text {
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  height: 45px; 
+  line-height: 45px;
+  /* ADVANCED: Subtle linear gradient fade-out on the right edge */
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.ticker-inner-text {
+  display: inline-block;
+  font-size: 1rem;
+  color: #cfd8dc; /* Light, readable text color on dark background */
+  font-weight: 500;
+  padding-left: 100%;
+  animation: scroll-left 35s linear infinite; 
+}
+
+.ticker-inner-text span {
+  /* Separator uses a slightly brighter green accent */
+  color: var(--secondary-color); 
+  font-weight: 700;
+  margin-right: 30px; 
+}
+
+.ticker-inner-text:hover {
+    animation-play-state: paused; /* Pause scrolling on hover */
+}
+
+
+/* --- KEYFRAME ANIMATIONS (Enhanced) --- */
+
+/* 1. Ticker Scroll Animation (Unchanged) */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 2. NEW: Pulse Color Animation (More attractive than just scale) */
+@keyframes pulse-color {
+  0% { color: var(--primary-color); }
+  50% { color: #f1c40f; } /* Subtle flash of yellow/gold for high-alert */
+  100% { color: var(--primary-color); }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+  .ticker-icon-static {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 0 5px 5px 0;
+  }
+  .ticker-label {
+    display: none; 
+  }
+  .ticker-scroll-text {
+    height: 35px;
+    line-height: 35px;
+  }
+  .ticker-inner-text {
+    font-size: 0.85rem;
+    animation-duration: 20s; 
+  }
+}
+/* ............ANNOUNCEMENT USER END (Sleek Gray Theme).............. */
 /* Mobile Responsive(...........Rohan........) */
 
 /* Media Query for Mobile and Tablet Devices (Screen width up to 768px) */

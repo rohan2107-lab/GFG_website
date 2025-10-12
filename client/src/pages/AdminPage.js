@@ -18,7 +18,7 @@ const AdminPage = () => {
           <Route path="/" element={<AdminDashboard />} /> 
 
           {/* Social Media Admin Routes */}
-          <Route path="announcements" element={<AnnouncementAdmin />} />
+          <Route path="announcements/*" element={<AnnouncementAdmin />} />
           
           {/* FIX: Use "blogs/*" to enable NESTED routing for Create/Edit views */}
           <Route path="blogs/*" element={<BlogAdmin />} /> 

@@ -1,30 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import AnnouncementEditor from './AnnouncementCMS/AnnouncementEditor';
+import AnnouncementList from './AnnouncementCMS/AnnouncementList';
+import { FaPlus, FaListAlt } from 'react-icons/fa';
 
 const AnnouncementAdmin = () => {
-  // Mock data for demonstration
-  const mockAnnouncements = [
-    { id: 1, message: 'Hackathon registration deadline is next week!', platform: 'All', date: '2025-10-10' },
-    { id: 2, message: 'Follow us on Instagram for live updates.', platform: 'Social Media', date: '2025-09-01' },
+  const navigate = useNavigate();
+  const [selectedView, setSelectedView] = useState('manage'); // Default to list view
+
+  const navItems = [
+    { key: 'create', name: 'Create Announcement', icon: FaPlus, path: 'create' },
+    { key: 'manage', name: 'Manage Announcements', icon: FaListAlt, path: '/' },
   ];
 
-  return (
+  const handleNavClick = (key, path) => {
+    setSelectedView(key);
+    navigate(`/admin/announcements/${path}`);
+  };
+
+  // Component that wraps the list and the 'Create' button (similar to ManageEvents)
+  const AnnouncementDashboard = ({ navigateToEditor }) => (
     <div className="admin-panel">
       <h2>Announcements & Updates 📢</h2>
-      <p>This panel is for the **Social Media Admin** to push important messages and event updates to the website and social channels.</p>
+      <p className="panel-subtitle">This panel is for the Social Media Admin to push important messages and event updates to the website and social channels.</p>
       
-      <button className="admin-cta-button">+ Schedule New Announcement</button>
-
-      <div className="admin-data-list">
-        <h3>Current and Scheduled Posts</h3>
-        <ul>
-          {mockAnnouncements.map(announcement => (
-            <li key={announcement.id} className="admin-list-item">
-              <span className="announcement-message">{announcement.message}</span>
-              <span className="announcement-platform">({announcement.platform})</span>
-              <button className="admin-edit-btn">Edit</button>
-            </li>
-          ))}
-        </ul>
+      <div className="event-cms-subnav"> {/* Reusing Event CMS Subnav Styles */}
+        {navItems.map(item => (
+          <button
+            key={item.key}
+            className={`cms-nav-button ${selectedView === item.key ? 'active' : ''}`}
+            onClick={() => handleNavClick(item.key, item.path)}
+          >
+            <item.icon className="cms-nav-icon" />
+            <span>{item.name}</span>
+          </button>
+        ))}
+      </div>
+      
+      {/* The button is now moved into the navItems above, but we still need the list:
+      The list itself will be rendered below the sub-navigation. 
+      */}
+      <AnnouncementList navigateToEditor={navigateToEditor} />
+    </div>
+  );
+  
+  return (
+    <div className="announcement-cms-container">
+      <div className="cms-main-panel" style={{ padding: 0 }}> {/* Remove extra padding */}
+        <Routes>
+          {/* Default view shows the list of announcements */}
+          <Route 
+            index 
+            element={<AnnouncementDashboard navigateToEditor={(id) => navigate(`edit/${id}`)} />} 
+          />
+          
+          {/* Create New Announcement */}
+          <Route path="create" element={<AnnouncementEditor />} />
+          
+          {/* Edit Existing Announcement */}
+          <Route path="edit/:announcementId" element={<AnnouncementEditor />} />
+          
+          {/* Fallback to dashboard for any unmatched path within /admin/announcements */}
+          <Route path="*" element={<AnnouncementDashboard navigateToEditor={(id) => navigate(`edit/${id}`)} />} />
+        </Routes>
       </div>
     </div>
   );
