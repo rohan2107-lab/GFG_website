@@ -1,26 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaCalendarAlt, FaUser } from 'react-icons/fa';
+import { FaCalendarAlt } from 'react-icons/fa';
 
 const BlogCard = ({ blog }) => {
+  // Format date for readability
+  const formattedDate = new Date(blog.published_at || blog.created_at).toLocaleDateString('en-IN', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
+
   return (
     <div className="blog-card-page">
       <div className="blog-image-container">
-        <img src={blog.image} alt={blog.title} className="blog-image" />
+        {/* ✅ Corrected field name from blog.image → blog.photo_url */}
+        <img 
+          src={blog.photo_url} 
+          alt={blog.title} 
+          className="blog-image" 
+          onError={(e) => { e.target.src = '/fallback.jpg'; }} // optional fallback
+        />
       </div>
+
       <div className="blog-content-details">
         <h3>{blog.title}</h3>
-        
+
         <div className="blog-meta-data">
-          <span><FaUser /> {blog.author}</span>
-          <span><FaCalendarAlt /> {blog.date}</span>
+          {/* Supabase may not have an author field, so you can hide it or add manually */}
+          <span><FaCalendarAlt /> {formattedDate}</span>
         </div>
 
-        <p className="blog-excerpt">{blog.content}</p>
-        
-        {/* Placeholder link for the actual blog post */}
+        <p className="blog-excerpt">
+          {blog.content?.slice(0, 150)}...
+        </p>
+
         <Link to={`/blogs/${blog.id}`} className="blog-read-more-button">
-          Read Article
+          Read Blog
         </Link>
       </div>
     </div>

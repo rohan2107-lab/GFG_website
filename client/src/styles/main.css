@@ -385,227 +385,302 @@ body {
 /* About Page Styles end....(Rohan)*/
 
 /* Blog Section for Homepage start ......(Rohan)*/
+/* --- ADVANCED HOMEPAGE BLOG SECTION STYLES --- */
+
 .blog-section {
-  padding: 5rem 2rem;
-  text-align: center;
-  background-color: #ffffff; /* Use a clean white background */
+    padding: 5rem 0; /* Reduced horizontal padding for full-width scrolling effect */
+    text-align: center;
+    background-color: #f0f2f5; /* Light Gray Background to highlight the section */
 }
 
-.blog-section h2 {
-  font-size: 2.5rem;
-  color: var(--text-color);
-  margin-bottom: 3rem;
-  position: relative;
-  /* Simple underline effect */
+/* 1. Horizontal Scroll Container */
+.blog-scroll-container {
+    /* KEY FOR HORIZONTAL SCROLLING */
+    overflow-x: scroll; 
+    overflow-y: hidden;
+    white-space: nowrap; /* Prevents cards from wrapping */
+    padding: 2rem 1rem; /* Padding for the scroll area */
+    max-width: 100vw;
+    cursor: grab; /* Indicates scrollability */
+    
+    /* ADVANCED: Custom scrollbar styling (may require vendor prefixes for cross-browser) */
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #f0f0f0;
 }
 
-.blog-section h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background-color: var(--primary-color); /* GFG Green underline */
-  border-radius: 2px;
+/* Inner Flex Container */
+.blog-list-h {
+    display: flex;
+    gap: 30px; /* Space between cards */
+    padding: 0 1rem; /* Padding for start/end of the list */
+    /* Adds extra space so the scroll bar feels responsive */
+    width: fit-content; 
+    min-width: 100%; 
 }
 
-.blog-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem; /* Increased spacing between cards */
-  margin-top: 2rem;
-  max-width: 1200px;
-  margin: 0 auto 3rem;
+/* 2. Individual Blog Card Styling */
+.blog-card-h {
+    flex-shrink: 0; /* Prevents cards from shrinking */
+    width: 320px; /* Fixed width for the card */
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Individual Blog Preview Card Styles (for Homepage) */
-.blog-card {
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-top: 5px solid var(--secondary-color); /* Accent top border */
+.blog-card-h:hover {
+    transform: scale(1.03); /* More pronounced scaling effect */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    /* ADVANCED: Add a slight rotation for dynamic feel */
+    transform: rotateZ(0.5deg) scale(1.02);
 }
 
-.blog-card:hover {
-  transform: translateY(-8px); /* Lifts up more dramatically */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+/* 3. Fixed Image Container */
+.blog-card-h-image-container {
+    width: 100%;
+    height: 200px; /* FIXED HEIGHT for consistent appearance */
+    overflow: hidden;
 }
 
-.blog-card-content {
-  padding: 1.5rem;
+.blog-card-h-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.blog-card-content h3 {
-  font-size: 1.4rem;
-  color: var(--text-color);
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-  min-height: 42px; /* Ensures consistent height for titles */
+.blog-card-h:hover .blog-card-h-image {
+    transform: scale(1.15); /* Slow, dramatic zoom on hover */
 }
 
-.blog-card-content p {
-  font-size: 0.95rem;
-  color: #666;
-  margin-bottom: 1rem;
+/* 4. Content and Footer */
+.blog-card-h-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: left;
 }
 
-.blog-date {
-  display: block;
-  font-size: 0.85rem;
-  color: #999;
-  margin-bottom: 1rem;
+.blog-card-h-content h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    color: #34495e;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    min-height: 40px; /* Consistent height for title */
 }
 
-/* Read More Button */
-.read-more {
-  display: inline-block;
-  color: var(--primary-color);
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s ease;
+.blog-card-h-content p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+    flex-grow: 1;
 }
 
-.read-more:hover {
-  color: var(--secondary-color);
-  text-decoration: underline;
+.blog-card-h-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
 }
 
-/* "View All Articles" CTA Button at the bottom */
-.cta-all-blogs {
-    margin-top: 4rem;
+.blog-date-h {
+    font-size: 0.8rem;
+    color: #999;
+    display: flex;
+    align-items: center;
 }
 
-.cta-all-blogs .cta-button-home {
-    /* Reusing the style from AboutSection.js, but centering it */
-    margin: 0 auto; 
+.blog-date-h svg {
+    margin-right: 5px;
+    color: var(--secondary-color);
 }
 
+.read-more-h {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
 
-/* Mobile Responsiveness for Homepage Blog Section */
+.read-more-h:hover {
+    color: #34495e;
+    text-decoration: underline;
+}
+
+/* Mobile Responsive Tweak: Increase scroll padding */
 @media (max-width: 768px) {
-  .blog-section {
-    padding: 3rem 1rem;
-  }
-  
-  .blog-section h2 {
-    font-size: 2rem;
-  }
-  
-  .blog-list {
-    grid-template-columns: 1fr; /* Single column on mobile */
-    gap: 1.5rem;
-  }
+    .blog-scroll-container {
+        padding: 1rem 0; 
+        /* Ensure the cards are easier to grab */
+    }
 }
 /* Blog Section for Homepage end ......(Rohan)*/
 /* Blog Post Detail Page Container start .....(Rohan) */
+/* Blog Post Detail Page Container start .....(Rohan) */
 .blog-detail-container {
-  max-width: 900px; /* Max width for comfortable reading */
-  margin: 0 auto;
-  padding: 4rem 2rem;
-  background-color: white; /* Clean reading background */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
+    max-width: 900px;
+    margin: 40px auto; /* Add margin above and below */
+    padding: 4rem 3rem; /* Increased padding */
+    background-color: white;
+    /* Soft, defined container box */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+    border-radius: 12px; /* Smoother edges */
+    animation: fadeIn 0.8s ease-out; /* Page load animation */
 }
 
 /* Header Section */
 .blog-detail-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #eee;
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0; /* Softer divider */
 }
 
 .blog-detail-header h1 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 3rem;
-  font-weight: 800;
-  color: #333;
-  line-height: 1.2;
-  margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.2rem; /* Slightly larger title */
+    font-weight: 900; /* Extra bold for impact */
+    color: #2c3e50; /* Dark, professional color */
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    animation: slideInUp 0.6s ease-out;
 }
 
-.blog-meta {
-  font-size: 0.95rem;
-  color: #888;
-  font-style: italic;
-  letter-spacing: 0.5px;
+/* Metadata Grouping and Styling */
+.blog-meta-info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 0.95rem;
+    color: #7f8c8d; /* Subtle text color */
 }
 
-/* Featured Image/Video Container */
+.blog-meta-author, .blog-meta-date {
+    display: flex;
+    align-items: center;
+}
+
+.blog-meta-info svg {
+    margin-right: 6px;
+    color: var(--secondary-color); /* GFG accent color for icons */
+}
+
+/* Back to Blogs Link */
+.back-to-blogs-link {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.back-to-blogs-link:hover {
+    color: #34495e;
+    transform: translateX(-5px); /* Subtle back animation */
+}
+
+/* Featured Image Container */
 .blog-featured-media {
-  width: 100%;
-  max-height: 500px;
-  overflow: hidden;
-  margin-bottom: 3rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-height: 450px; /* Consistent max height */
+    overflow: hidden;
+    margin-bottom: 3.5rem;
+    border-radius: 10px;
+    /* Animated glow on load/hover */
+    box-shadow: 0 0 0 5px rgba(46, 125, 50, 0.1); 
+    transition: box-shadow 0.5s ease;
+}
+
+.blog-featured-media:hover {
+    box-shadow: 0 0 0 8px rgba(46, 125, 50, 0.2); 
 }
 
 .blog-featured-media img,
 .blog-featured-media video {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
+    width: 100%;
+    height: 100%; /* Fill the container height */
+    display: block;
+    object-fit: cover;
+    transition: transform 0.6s ease-out;
 }
 
 /* Content Area - Focus on Readability (Typography) */
 .blog-detail-content {
-  line-height: 1.8; /* Excellent line spacing for easy reading */
-  font-size: 1.1rem;
-  color: #444;
+    line-height: 1.7; /* Excellent line spacing */
+    font-size: 1.1rem;
+    color: #34495e; /* Dark, readable body text */
 }
 
 .blog-detail-content p {
-  margin-bottom: 1.5em;
-  text-align: justify; /* Justify text for a newspaper/magazine feel */
+    margin-bottom: 1.6em;
+    text-align: justify;
 }
 
-/* Styling for subheadings and blockquotes */
+/* Styling for subheadings */
 .blog-detail-content h2 {
-  font-size: 2rem;
-  color: var(--primary-color);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  border-left: 5px solid var(--secondary-color);
-  padding-left: 15px;
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary-color);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-left: 6px solid var(--secondary-color); /* Thicker accent line */
+    padding-left: 18px;
+    transition: border-color 0.3s ease;
 }
 
-.blog-detail-content ul, 
-.blog-detail-content ol {
-  padding-left: 25px;
-  margin-bottom: 1.5em;
+.blog-detail-content h2:hover {
+    border-left-color: #f1c40f; /* Quick color change on hover */
 }
 
+/* Styling for blockquotes */
 .blog-detail-content blockquote {
-  border-left: 4px solid var(--secondary-color);
-  padding: 10px 20px;
-  margin: 20px 0;
-  background-color: #f7f7f7;
-  font-style: italic;
-  color: #555;
+    border-left: 4px solid var(--secondary-color);
+    padding: 15px 25px;
+    margin: 30px 0;
+    background-color: #f7f7f7;
+    font-style: italic;
+    color: #555;
+    border-radius: 4px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Inner shadow for depth */
 }
 
+/* --- KEYFRAME ANIMATIONS --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 /* Responsive Adjustments */
 @media (max-width: 950px) {
-  .blog-detail-container {
-    padding: 2rem 1rem;
-    max-width: 100%;
-    margin: 0;
-    box-shadow: none;
-  }
+    .blog-detail-container {
+        padding: 2rem 1rem;
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none;
+    }
 
-  .blog-detail-header h1 {
-    font-size: 2rem;
-  }
+    .blog-detail-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .blog-detail-content {
+        font-size: 1rem;
+    }
 }
-/* Blog Post Detail Page Container start .....(Rohan) */
+/* Blog Post Detail Page Container end .....(Rohan) */
 /* Footer Styles start....(Rohan) */
 .footer-container {
   background-color: #0d1117;
