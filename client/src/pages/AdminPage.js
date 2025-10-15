@@ -4,9 +4,11 @@ import AdminSidebar from '../components/Admin/AdminSidebar';
 import AdminDashboard from '../components/Admin/AdminDashboard';
 import BlogAdmin from '../components/Admin/BlogAdmin';
 import AnnouncementAdmin from '../components/Admin/AnnouncementAdmin';
-// Import placeholder components for the new routes
+// Import UserAdmin and other placeholder components
 import EventAdmin from '../components/Admin/EventAdmin'; 
-// import DesignAdmin from '../components/Admin/DesignAdmin'; 
+import UserAdmin from '../components/Admin/UserAdmin'; // <<< NEW IMPORT
+
+// import DesignAdmin from '../components/Admin/DesignAdmin'; // (Uncomment if needed later)
 
 const AdminPage = () => {
   return (
@@ -20,7 +22,7 @@ const AdminPage = () => {
           {/* Social Media Admin Routes */}
           <Route path="announcements/*" element={<AnnouncementAdmin />} />
           
-          {/* FIX: Use "blogs/*" to enable NESTED routing for Create/Edit views */}
+          {/* Blog Management Route */}
           <Route path="blogs/*" element={<BlogAdmin />} /> 
 
           {/* Event Management Route */}
@@ -29,8 +31,8 @@ const AdminPage = () => {
           {/* Design Management Route */}
           {/* <Route path="design" element={<DesignAdmin />} /> */}
 
-          {/* Placeholder for Super Admin */}
-          <Route path="users" element={<h2>User Role Management (Super Admin)</h2>} />
+          {/* SUPER ADMIN ROUTE FIX: Render the functional UserAdmin component */}
+          <Route path="users" element={<UserAdmin />} />
           
           {/* Fallback 404 Route */}
           <Route path="*" element={<h2>404 Admin Page Not Found</h2>} />

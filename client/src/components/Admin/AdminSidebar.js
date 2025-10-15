@@ -1,87 +1,69 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaTachometerAlt, FaBullhorn, FaBlog, FaUsers, FaCalendarAlt, FaPalette } from 'react-icons/fa'; 
+import React, { useState } from 'react'; // ADD useState
+import { Link, useLocation } from 'react-router-dom';
+// ADD FaAngleDoubleLeft/Right for the collapse button
+import { FaTachometerAlt, FaBullhorn, FaBlog, FaSignOutAlt, FaCalendarAlt, FaUsers, FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa'; 
+import { useAuth } from '../../context/AuthContext'; 
 
 const AdminSidebar = () => {
-  // ----------------------------------------------------------------
-  // MOCK LOGIC: Simulate the logged-in user's role for frontend development
-  // CHANGE THIS ROLE to test the different visibility settings:
-  // 'super_admin', 'social_media_admin', 'events_admin', 'tech_admin', 'creative_admin'
-  const mockUserRole = 'super_admin'; 
-  // ----------------------------------------------------------------
-
-  // Expanded navItems with required roles for each link
-  const navItems = [
-    { 
-      name: 'Dashboard', 
-      path: '/admin', 
-      icon: FaTachometerAlt, 
-      roles: ['super_admin', 'tech_admin', 'social_media_admin', 'events_admin', 'creative_admin'] 
-    },
+    const { getUserRole, signOut } = useAuth();
+    const userRole = getUserRole() || 'user';
+    const location = useLocation();
     
-    // Social Media Team (Handles Announcements & Blogs)
-    { 
-      name: 'Announcements', 
-      path: '/admin/announcements', 
-      icon: FaBullhorn, 
-      roles: ['super_admin', 'social_media_admin'] 
-    },
-    { 
-      name: 'Blog Management', 
-      path: '/admin/blogs', 
-      icon: FaBlog, 
-      roles: ['super_admin', 'social_media_admin', 'tech_admin'] 
-    },
-    
-    // Event Team
-    { 
-      name: 'Event Management', 
-      path: '/admin/events', 
-      icon: FaCalendarAlt, 
-      roles: ['super_admin', 'events_admin'] 
-    },
-    
-    // Creative & Design Team (Adding the icon for completeness)
-    { 
-      name: 'Design Assets', 
-      path: '/admin/design', 
-      icon: FaPalette, 
-      roles: ['super_admin', 'creative_admin'] 
-    },
+    // NEW STATE: Manages whether the sidebar is collapsed
+    const [isCollapsed, setIsCollapsed] = useState(false); 
 
-    // Super Admin Only
-    { 
-      name: 'User & Roles', 
-      path: '/admin/users', 
-      icon: FaUsers, 
-      roles: ['super_admin'] 
-    },
-  ];
+    const navItems = [
+        // ... (navItems array remains the same)
+        { name: 'Dashboard', path: '/admin', icon: FaTachometerAlt, roles: ['super_admin', 'social_media_admin', 'events_admin', 'tech_admin', 'user', 'campus_mantri'] },
+        { name: 'Announcements', path: '/admin/announcements', icon: FaBullhorn, roles: ['super_admin', 'social_media_admin', 'events_admin', 'tech_admin', 'campus_mantri'] },
+        { name: 'Blog Management', path: '/admin/blogs', icon: FaBlog, roles: ['super_admin', 'social_media_admin'] },
+        { name: 'Event Management', path: '/admin/events', icon: FaCalendarAlt, roles: ['super_admin', 'events_admin'] },
+        { name: 'User & Roles', path: '/admin/users', icon: FaUsers, roles: ['super_admin'] },
+    ];
 
-  // Filter the navigation items based on the mockUserRole
-  const filteredNavItems = navItems.filter(item => 
-    item.roles.includes(mockUserRole)
-  );
+    const filteredNavItems = navItems.filter(item => item.roles.includes(userRole));
 
-  return (
-    <div className="admin-sidebar">
-      <h2>GFG Admin</h2>
-      {/* Display the current mock role for testing purposes */}
-      <div className="admin-role-tag">Role: {mockUserRole.replace('_', ' ').toUpperCase()}</div>
-      
-      <ul>
-        {/* Use the filtered list for rendering */}
-        {filteredNavItems.map((item) => (
-          <li key={item.path}>
-            <Link to={item.path} className="sidebar-link">
-              <item.icon className="sidebar-icon" />
-              <span>{item.name}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    return (
+        // Apply collapsed class based on state
+        <div className={`admin-sidebar ${isCollapsed ? 'collapsed' : ''}`}> 
+            
+            <div className="sidebar-header-group">
+                <h2>GFG Admin</h2>
+                <div className="admin-role-tag">ROLE: {userRole.replace('_', ' ').toUpperCase()}</div>
+            </div>
+            
+            <button 
+                className="collapse-toggle-btn"
+                onClick={() => setIsCollapsed(!isCollapsed)}
+                title={isCollapsed ? 'Expand Menu' : 'Collapse Menu'}
+            >
+                {isCollapsed ? <FaAngleDoubleRight /> : <FaAngleDoubleLeft />}
+            </button>
+            
+            <ul>
+                {filteredNavItems.map((item) => (
+                    <li key={item.path}>
+                        <Link 
+                            to={item.path} 
+                            className={`sidebar-link ${location.pathname.startsWith(item.path) ? 'active' : ''}`}
+                        >
+                            <item.icon className="sidebar-icon" />
+                            {/* Hide text when collapsed */}
+                            <span className="link-text">{item.name}</span> 
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+            
+            <div className="sidebar-footer"> 
+                <button onClick={signOut} className="sidebar-link logout-btn">
+                    <FaSignOutAlt className="sidebar-icon" /> 
+                    {/* Hide text when collapsed */}
+                    <span className="link-text">Log Out</span> 
+                </button>
+            </div>
+        </div>
+    );
 };
 
 export default AdminSidebar;

@@ -9,23 +9,26 @@ import EventsPage from './pages/EventsPage';
 import TeamPage from './pages/TeamPage';
 import BlogPostDetail from './pages/BlogPostDetail'; 
 
+// AUTH Imports (NEW)
+import Login from './components/Auth/Login'; 
+import Register from './components/Auth/Register';
+import ProtectedRoute from './components/Auth/ProtectedRoute'; 
+
 // Layout & Admin Imports
 import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
-import AdminPage from './pages/AdminPage'; // Import the AdminPage component
+import AdminPage from './pages/AdminPage'; // Admin CMS Router
 
 import './styles/main.css';
 
 // ------------------------------------------------------------------
 // 1. Public Layout Component
-// This component wraps ALL public pages with the Header and Footer
 // ------------------------------------------------------------------
 const PublicLayout = () => {
   return (
     <>
       <Header />
       <main className="public-content-wrapper"> 
-        {/* The <Outlet /> renders the specific page component (HomePage, AboutPage, etc.) */}
         <Outlet /> 
       </main>
       <Footer />
@@ -39,7 +42,7 @@ function App() {
       <Routes>
 
         {/* ---------------------------------------------------- */}
-        {/* GROUP 1: PUBLIC ROUTES (Uses the Header and Footer)  */}
+        {/* GROUP 1: PUBLIC ROUTES */}
         {/* ---------------------------------------------------- */}
         <Route element={<PublicLayout />}>
           <Route path="/" element={<HomePage />} />
@@ -47,20 +50,28 @@ function App() {
           <Route path="/blogs" element={<BlogPage />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/team" element={<TeamPage />} />
-         {/* FIX: DYNAMIC BLOG DETAIL ROUTE */}
-          {/* The ':blogId' tells React Router to capture the ID segment */}
           <Route path="/blogs/:blogId" element={<BlogPostDetail />} /> 
-          {/* Add a Login route here when you create it */}
-          {/* <Route path="/login" element={<Login />} /> */}
+          
+          {/* AUTH ROUTES - Publicly accessible */}
+          <Route path="/login" element={<Login />} /> 
+          <Route path="/register" element={<Register />} />
         </Route>
 
         {/* ---------------------------------------------------- */}
-        {/* GROUP 2: ADMIN ROUTES (DOES NOT use the public Header/Footer) */}
+        {/* GROUP 2: ADMIN ROUTES - SECURED BY ProtectedRoute    */}
         {/* ---------------------------------------------------- */}
-        {/* The '*' tells the router to match any path starting with /admin/ */}
-        <Route path="/admin/*" element={<AdminPage />} /> 
+        <Route 
+          path="/admin/*" 
+          element={
+            // FIX: Change requiredRole to 'user'. This allows *any* logged-in user access 
+            // to the AdminPage, and the sidebar inside AdminPage will filter the links.
+            <ProtectedRoute requiredRole='user'> 
+              <AdminPage />
+            </ProtectedRoute>
+          } 
+        /> 
 
-        {/* Fallback 404 Route (Can also use the PublicLayout) */}
+        {/* Fallback 404 Route */}
         <Route path="*" element={<> <Header /> <h2>404 Page Not Found</h2> <Footer /> </>} />
 
       </Routes>
