@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaInstagram, FaLinkedin, FaFacebook, FaGithub, FaEnvelope } from 'react-icons/fa';
+import FlippingLogos from './FlippingLogos';
 
 const Footer = () => {
   return (
@@ -11,6 +12,7 @@ const Footer = () => {
             <h2>GFG IKGPTU</h2>
           </Link>
           <p>The official campus community of GeeksforGeeks at IKGPTU.</p>
+          <FlippingLogos />
         </div>
 
         <div className="footer-links">
@@ -47,7 +49,8 @@ const Footer = () => {
       </div>
       
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} GFG IKGPTU. All Rights Reserved.</p>
+        <p>&copy; {new Date().getFullYear()} GFG IKGPTU. All Rights Reserved.
+        <Link to="/login" className="footer-admin-login-link">Admin</Link></p>
       </div>
     </footer>
   );
