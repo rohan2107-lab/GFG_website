@@ -1,40 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react'; // ADDED useMemo
 import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../../../api/supabaseClient'; 
 
-const AnnouncementEditor = ({ onComplete }) => {
+const AnnouncementEditor = () => {
     const { announcementId } = useParams();
     const navigate = useNavigate();
     
-    const initialAnnouncementState = {
+    // FIX 1: Wrap initial state definition in useMemo to stabilize the object identity
+    // This removes the dependency warning by ensuring the object only changes when dependencies change (none here).
+    const initialAnnouncementState = useMemo(() => ({
         message: '',
         platform: 'Website',
-        schedule_date: new Date().toISOString().slice(0, 16), // Current date/time
+        schedule_date: new Date().toISOString().slice(0, 16),
         status: 'Draft',
         is_active: false,
-    };
+    }), []); // Empty dependency array means this object is created only once.
 
     const [announcement, setAnnouncement] = useState(initialAnnouncementState);
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        if (announcementId) {
-            loadAnnouncement(announcementId);
-        } else {
-            setAnnouncement(initialAnnouncementState);
-        }
-    }, [announcementId]);
-
-    const loadAnnouncement = async (id) => {
+    // loadAnnouncement is wrapped in useCallback and uses _error for clean code
+    const loadAnnouncement = useCallback(async (id) => {
         setLoading(true);
-        const { data, error } = await supabase.from('announcements').select('*').eq('id', id).single();
+        // FIX 2: Rename 'error' to '_error' to indicate it's deliberately ignored/unused
+        const { data, error: _error } = await supabase.from('announcements').select('*').eq('id', id).single();
+        if (_error) { // CHECK IF AN ERROR OCCURRED
+    // FIX: Use the '_error' variable here to silence the warning
+    console.error('Error loading announcement:', _error.message); 
+} 
+        
         if (data) {
             // Format date for datetime-local input
             data.schedule_date = data.schedule_date ? new Date(data.schedule_date).toISOString().slice(0, 16) : initialAnnouncementState.schedule_date;
             setAnnouncement(data);
         }
         setLoading(false);
-    };
+    }, [initialAnnouncementState.schedule_date]); 
+
+    // FINAL FIX: Dependencies are clean because initialAnnouncementState is stable (useMemo).
+    useEffect(() => {
+        if (announcementId) {
+            loadAnnouncement(announcementId);
+        } else {
+            setAnnouncement(initialAnnouncementState);
+        }
+    }, [announcementId, loadAnnouncement, initialAnnouncementState]); // Dependencies are now clean
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -48,10 +58,10 @@ const AnnouncementEditor = ({ onComplete }) => {
         e.preventDefault();
         setLoading(true);
         
-        // Logic to set status and active flag on save
         const newStatus = announcement.status === 'Draft' && announcement.is_active ? 'Scheduled' : announcement.status;
         const payload = { ...announcement, status: newStatus };
-        delete payload.id; // Ensure we don't send the ID back for update/insert
+        delete payload.id; 
+        delete payload.author_id;
 
         let result;
 
@@ -60,13 +70,15 @@ const AnnouncementEditor = ({ onComplete }) => {
         } else {
             result = await supabase.from('announcements').insert([payload]).select();
         }
+        
+        // Use saveError for clean error handling
+        const { error: saveError } = result;
 
-        if (result.error) {
-            console.error('Save error:', result.error.message);
-            alert(`Error saving announcement: ${result.error.message}`);
+        if (saveError) {
+            console.error('Save error:', saveError.message);
+            alert(`Error saving announcement: ${saveError.message}`);
         } else {
             alert(`Announcement saved successfully! Status: ${newStatus}`);
-            // Redirect back to the main list after saving
             navigate('/admin/announcements', { replace: true });
         }
         setLoading(false);
@@ -78,6 +90,8 @@ const AnnouncementEditor = ({ onComplete }) => {
             <p className="panel-subtitle">This message will be pushed to the website ticker or social channels.</p>
             
             <form onSubmit={handleSave} className="announcement-form-grid">
+                
+                {/* Message Field */}
                 <div className="form-group-full">
                     <label htmlFor="message">Announcement Message *</label>
                     <textarea 
@@ -92,6 +106,7 @@ const AnnouncementEditor = ({ onComplete }) => {
                     ></textarea>
                 </div>
                 
+                {/* Schedule Date/Time */}
                 <div className="form-group-half">
                     <label htmlFor="schedule_date">Schedule Date/Time</label>
                     <input 
@@ -104,6 +119,7 @@ const AnnouncementEditor = ({ onComplete }) => {
                     />
                 </div>
 
+                {/* Target Platform */}
                 <div className="form-group-half">
                     <label htmlFor="platform">Target Platform</label>
                     <select 
@@ -119,6 +135,7 @@ const AnnouncementEditor = ({ onComplete }) => {
                     </select>
                 </div>
 
+                {/* Active/Publish Checkbox */}
                 <div className="form-group-half checkbox-group">
                     <input 
                         type="checkbox" 
@@ -130,6 +147,7 @@ const AnnouncementEditor = ({ onComplete }) => {
                     <label htmlFor="is_active">Ready to Publish/Schedule (Set Active)</label>
                 </div>
                 
+                {/* Submission Buttons */}
                 <div className="form-group-full form-actions">
                     <button type="submit" className="admin-cta-button" disabled={loading}>
                         {loading ? 'Saving...' : (announcementId ? 'Save Changes' : 'Schedule Announcement')}

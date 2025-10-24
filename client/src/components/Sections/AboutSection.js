@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // Added FaCode and FaRocket for more visually distinct features
-import { FaGraduationCap, FaHandsHelping, FaCode, FaRocket } from 'react-icons/fa'; 
+import { FaHandsHelping, FaCode, FaRocket } from 'react-icons/fa'; 
 
 const AboutSection = () => {
   return (

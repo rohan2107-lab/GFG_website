@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { FaUsers, FaBlog, FaCalendarAlt, FaBullhorn, FaCheckCircle } from 'react-icons/fa';
-// Import useAuth to potentially display user-specific metrics later
+import React, { useState } from 'react'; // Removed unused 'useEffect'
+import { FaUsers, FaBlog, FaCalendarAlt, FaCheckCircle } from 'react-icons/fa'; // Removed unused 'FaBullhorn'
 import { useAuth } from '../../context/AuthContext'; 
 
 const AdminDashboard = () => {
     const { user, getUserRole } = useAuth();
     const userRole = getUserRole();
 
-    // Mock data for key statistics (In a real app, these would be fetched from Supabase)
-    const [stats, setStats] = useState({
+    // Mock data for key statistics
+    // Removed unused setter 'setStats'
+    const [stats] = useState({ 
         totalUsers: '145',
         totalBlogs: '24',
         upcomingEvents: '3',
         pendingDrafts: '7',
     });
 
-    const [recentActivity, setRecentActivity] = useState([
+    // Mock data for recent activity
+    // Removed unused setter 'setRecentActivity'
+    const [recentActivity] = useState([ 
         { id: 1, type: 'Blog', title: 'MERN Stack Guide', status: 'Published', user: 'Tech Admin' },
         { id: 2, type: 'Event', title: 'Hackathon 4.0', status: 'Scheduled', user: 'Events Admin' },
         { id: 3, type: 'User', title: 'New Registration', status: 'Confirmed', user: 'New User' },
@@ -29,18 +31,15 @@ const AdminDashboard = () => {
         { title: 'Drafts in Review', value: stats.pendingDrafts, icon: FaCheckCircle, color: '#9b59b6' },
     ];
     
-    // In a final version, use useEffect to fetch data from Supabase here
-    /*
-    useEffect(() => {
-        // fetchStatsFromSupabase();
-        // fetchRecentActivityLogs();
-    }, []);
+    /* The commented-out useEffect block is fine to leave commented out, 
+     as it is ignored by the compiler.
     */
 
     return (
         <div className="admin-dashboard-container">
             <header className="dashboard-header">
-                <h2>Welcome back, {user ? user.email.split('@')[0] : 'Admin'}!</h2>
+                {/* Fixed user display: only show part before '@' */}
+                <h2>Welcome back, {user ? user.email.split('@')[0] : 'Admin'}!</h2> 
                 <p className="panel-subtitle">
                     Quick overview of {userRole.replace('_', ' ').toUpperCase()} activity and site health.
                 </p>

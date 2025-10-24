@@ -1,7 +1,6 @@
 import React from 'react';
 import TeamMemberCard from '../components/Team/TeamMemberCard';
 import { teamMembers } from '../mockData';
-import { Link } from 'react-router-dom';
 
 const TeamPage = () => {
   // Filter members by category

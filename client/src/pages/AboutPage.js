@@ -1,6 +1,6 @@
 import React from 'react';
 // Updated icons for new sections
-import { FaCode, FaRocket, FaUsers, FaChartLine, FaLinkedin, FaGraduationCap, FaRegLightbulb, FaPaintBrush, FaHandsHelping } from 'react-icons/fa';
+import { FaCode, FaRocket, FaUsers, FaChartLine, FaLinkedin, FaGraduationCap, FaRegLightbulb, FaPaintBrush } from 'react-icons/fa';
 
 const AboutPage = () => {
   return (
