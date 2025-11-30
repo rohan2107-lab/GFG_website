@@ -8,7 +8,7 @@ const AboutPage = () => {
       <section className="about-hero">
         <h1>Building the Future of Tech at IKGPTU</h1>
         <p className="hero-subtitle">
-          We are the official campus community of **GeeksforGeeks (GFG)**, dedicated to fostering a culture of coding, collaboration, and competitive programming excellence.
+          We are the official campus community of <b>GeeksforGeeks (GFG)</b>, dedicated to fostering a culture of coding, collaboration, and competitive programming excellence.
         </p>
       </section>
 
@@ -18,14 +18,14 @@ const AboutPage = () => {
           <FaRocket className="mv-icon mission-icon" />
           <h2>Our Mission</h2>
           <p>
-            To **empower** every student at IKGPTU with the necessary technical skills and confidence to excel in the global tech industry. We actively work to bridge the gap between academic knowledge and **real-world industrial needs**.
+            To <b>empower</b> every student at IKGPTU with the necessary technical skills and confidence to excel in the global tech industry. We actively work to bridge the gap between academic knowledge and <b>real-world industrial needs</b>.
           </p>
         </div>
         <div className="mission-vision-card">
           <FaChartLine className="mv-icon vision-icon" />
           <h2>Our Vision</h2>
           <p>
-            To be the **leading technical society** on campus, recognized for promoting innovation, ethical coding practices, and producing top-tier developers and **competitive programmers** ready for tier-1 companies.
+            To be the <b>leading technical society</b> on campus, recognized for promoting innovation, ethical coding practices, and producing top-tier developers and <b>competitive programmers</b> ready for tier-1 companies.
           </p>
         </div>
       </section>

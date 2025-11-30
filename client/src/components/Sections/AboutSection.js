@@ -9,7 +9,7 @@ const AboutSection = () => {
       <div className="about-section-content">
         <h2 className="section-title-home">Igniting the Tech Spark at IKGPTU</h2>
         <p className="subtitle-home">
-          We are the official **GeeksforGeeks (GFG)** campus community, dedicated to empowering students through coding, collaboration, and competitive programming.
+          We are the official <b>GeeksforGeeks (GFG)</b> campus community, dedicated to empowering students through coding, collaboration, and competitive programming.
         </p>
 
         <div className="features-grid-home">
